@@ -67,7 +67,7 @@ No modules.
 | <a name="input_argocd_oidc_tls_skip_verify"></a> [argocd\_oidc\_tls\_skip\_verify](#input\_argocd\_oidc\_tls\_skip\_verify) | Skip TLS verification when ArgoCD talks to the OIDC issuer. Needed for some internal/self-signed IdP endpoints; should be false for IdPs with publicly trusted certs (e.g. Microsoft Entra). | `bool` | `true` | no |
 | <a name="input_argocd_path"></a> [argocd\_path](#input\_argocd\_path) | Path in `var.argocd_repo` in which app defs are placed | `string` | `"."` | no |
 | <a name="input_argocd_path_recursive"></a> [argocd\_path\_recursive](#input\_argocd\_path\_recursive) | Should ArgoCD recurse through `var.argocd_path`? | `bool` | `true` | no |
-| <a name="input_argocd_repo"></a> [argocd\_repo](#input\_argocd\_repo) | Git repo for Argo apps | `string` | `"https://git.coreinfra.cloud/coreinfra/argo-apps.git"` | no |
+| <a name="input_argocd_repo"></a> [argocd\_repo](#input\_argocd\_repo) | Git repo for Argo apps | `string` | `"git@github.com:inl-io/argo-apps.git"` | no |
 | <a name="input_doppler_token"></a> [doppler\_token](#input\_doppler\_token) | Service token to access Doppler | `string` | `""` | no |
 | <a name="input_infra_namespaces"></a> [infra\_namespaces](#input\_infra\_namespaces) | List of namespaces to create | `list(string)` | <pre>[<br/>  "argocd",<br/>  "external-secrets",<br/>  "inl-infra"<br/>]</pre> | no |
 | <a name="input_ingress_class"></a> [ingress\_class](#input\_ingress\_class) | Ingress class to use | `string` | `"nginx"` | no |

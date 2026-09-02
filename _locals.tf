@@ -4,7 +4,7 @@ locals {
     helm_repo  = "${path.root}/../../charts"
     helm_chart = "raw-2.0.0"
     helm_source_repos = [
-      "https://git.coreinfra.cloud/coreinfra/argo-apps.git",
+      "git@github.com:inl-io/argo-apps.git",
       "https://charts.inl.io/",
       "https://sdbx-charts.inlv2.com/",
       "https://dev-charts.inlv2.com/",
