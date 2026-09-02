@@ -28,20 +28,26 @@ locals {
     repos = {
       argo_apps = {
         app_name              = "argo-apps-primary"
-        url                   = "https://git.coreinfra.cloud/coreinfra/argo-apps.git"
+        url                   = "git@github.com:inl-io/argo-apps.git"
         type                  = "git"
         branch                = "main"
         recurse               = true
         sync_prune            = true
         sync_selfheal         = true
         path                  = "/"
-        username              = "argocd-deployer"
-        password              = data.kubernetes_secret_v1.argo_doppler.data.GITLABCOREINFRAACCESSKEY
         project               = "default"
         destination_namespace = "argocd"
       }
     }
   }
+
+  # The argo-apps deploy key, pre-indented to sit under `sshPrivateKey: |` (10
+  # spaces) in the argo-cd helm values block below. Built with join() rather than
+  # indent() so the first line is indented too.
+  argo_apps_ssh_key_block = join("\n", [
+    for line in split("\n", trimspace(data.kubernetes_secret_v1.argo_doppler.data.GITHUB_INLIO_ARGO_APPS_PRIVATE_KEY)) :
+    "          ${line}"
+  ])
 }
 
 resource "helm_release" "argocd" {
@@ -131,8 +137,8 @@ resource "helm_release" "argocd" {
       argo-apps:
         url: ${local.argocd_config.repos.argo_apps.url}
         type: ${local.argocd_config.repos.argo_apps.type}
-        username: ${local.argocd_config.repos.argo_apps.username}
-        password: "${local.argocd_config.repos.argo_apps.password}"
+        sshPrivateKey: |
+  ${local.argo_apps_ssh_key_block}
   notifications:
     enabled: true
     secret:

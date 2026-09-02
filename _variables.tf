@@ -25,7 +25,7 @@ variable "argocd_helm_version" {
 variable "argocd_repo" {
   description = "Git repo for Argo apps"
   type        = string
-  default     = "https://git.coreinfra.cloud/coreinfra/argo-apps.git"
+  default     = "git@github.com:inl-io/argo-apps.git"
 }
 
 variable "argocd_branch" {
