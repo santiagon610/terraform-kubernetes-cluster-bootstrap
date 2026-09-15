@@ -25,6 +25,7 @@ locals {
       rbac_scopes                = var.argocd_oidc_rbac_scopes
       tls_skip_verify            = var.argocd_oidc_tls_skip_verify
     }
+    session_duration = var.argocd_session_duration
     repos = {
       argo_apps = {
         app_name              = "argo-apps-primary"
@@ -110,6 +111,7 @@ resource "helm_release" "argocd" {
       url: "https://${local.argocd_config.fqdn}/"
       admin.enabled: false
       exec.enabled: true
+      users.session.duration: "${local.argocd_config.session_duration}"
       oidc.config: |
           name: ${local.argocd_config.oauth.name}
           issuer: "${local.argocd_config.oauth.issuer}"
