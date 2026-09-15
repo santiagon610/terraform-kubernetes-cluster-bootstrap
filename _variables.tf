@@ -177,6 +177,12 @@ variable "argocd_oidc_tls_skip_verify" {
   default     = true
 }
 
+variable "argocd_session_duration" {
+  description = "How long an ArgoCD login session lasts before a user must reauthenticate, as a Go duration string (e.g. \"24h\", \"72h\"). Sets `users.session.duration` in argocd-cm."
+  type        = string
+  default     = "24h"
+}
+
 variable "ingress_class" {
   description = "Ingress class to use"
   type        = string
