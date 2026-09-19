@@ -19,7 +19,7 @@ variable "argocd_helm_chart" {
 variable "argocd_helm_version" {
   description = "Version of the `var.argocd_helm_chart` to use"
   type        = string
-  default     = "10.2.1"
+  default     = "10.9.2"
 }
 
 variable "argocd_repo" {
