@@ -35,7 +35,7 @@ resource "helm_release" "external_managed_secret_stores" {
   version    = "2.0.0"
   values = [<<-EOF
     resources:
-      - apiVersion: external-secrets.io/v1beta1
+      - apiVersion: external-secrets.io/v1
         kind: ClusterSecretStore
         metadata:
           name: doppler-inl
@@ -49,7 +49,7 @@ resource "helm_release" "external_managed_secret_stores" {
                     name: ${kubernetes_secret_v1.doppler_secret_inl[0].metadata[0].name}
                     namespace: ${kubernetes_secret_v1.doppler_secret_inl[0].metadata[0].namespace}
                     key: serviceToken
-      - apiVersion: external-secrets.io/v1beta1
+      - apiVersion: external-secrets.io/v1
         kind: ClusterExternalSecret
         metadata:
           name: doppler-inl
