@@ -59,7 +59,10 @@ resource "helm_release" "external_managed_secret_stores" {
               inl.io/all-secrets: please
           refreshTime: 2m
           externalSecretSpec:
-            refreshInterval: 2m
+            # One bulk Doppler fetch per namespace. Consumers (external-dns,
+            # cert-manager DNS01 solvers) hold static API creds, so hourly is
+            # plenty; force a resync with the force-sync annotation if needed.
+            refreshInterval: 1h
             secretStoreRef:
               kind: ClusterSecretStore
               name: doppler-inl
