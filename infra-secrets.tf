@@ -6,7 +6,7 @@ resource "helm_release" "external_secrets_operator" {
   namespace     = kubernetes_namespace_v1.infra["external-secrets"].metadata[0].name
   repository    = "https://charts.external-secrets.io"
   chart         = "external-secrets"
-  version       = "1.2.1"
+  version       = "1.3.2"
   verify        = false
   force_update  = true
   recreate_pods = true
