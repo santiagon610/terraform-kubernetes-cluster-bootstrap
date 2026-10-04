@@ -6,9 +6,7 @@ locals {
     helm_source_repos = [
       "git@github.com:inl-io/argo-apps.git",
       "https://charts.inl.io/",
-      "https://sdbx-charts.inlv2.com/",
-      "https://dev-charts.inlv2.com/",
-      "https://test-charts.inlv2.com/",
+      "https://charts.inl.io/inl/",
     ]
     namespace_labels = {
       managed_by = "terraform"

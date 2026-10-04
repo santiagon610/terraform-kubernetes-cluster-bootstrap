@@ -30,9 +30,9 @@ resource "helm_release" "external_managed_secret_stores" {
   count      = var.doppler_token != "" ? 1 : 0
   name       = "external-managed-secret-stores"
   namespace  = kubernetes_namespace_v1.infra["external-secrets"].metadata[0].name
-  repository = "https://bedag.github.io/helm-charts/"
+  repository = "https://charts.inl.io/inl/"
   chart      = "raw"
-  version    = "2.0.0"
+  version    = "2.1.0"
   values = [<<-EOF
     resources:
       - apiVersion: external-secrets.io/v1

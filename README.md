@@ -55,7 +55,7 @@ No modules.
 | <a name="input_argocd_fqdn"></a> [argocd\_fqdn](#input\_argocd\_fqdn) | FQDN to access ArgoCD | `string` | `"argocd.example.com"` | no |
 | <a name="input_argocd_helm_chart"></a> [argocd\_helm\_chart](#input\_argocd\_helm\_chart) | Name of Helm chart | `string` | `"argo-cd"` | no |
 | <a name="input_argocd_helm_repo"></a> [argocd\_helm\_repo](#input\_argocd\_helm\_repo) | URL to Helm chart | `string` | `"https://argoproj.github.io/argo-helm"` | no |
-| <a name="input_argocd_helm_version"></a> [argocd\_helm\_version](#input\_argocd\_helm\_version) | Version of the `var.argocd_helm_chart` to use | `string` | `"10.2.1"` | no |
+| <a name="input_argocd_helm_version"></a> [argocd\_helm\_version](#input\_argocd\_helm\_version) | Version of the `var.argocd_helm_chart` to use | `string` | `"10.9.2"` | no |
 | <a name="input_argocd_oidc_admin_group"></a> [argocd\_oidc\_admin\_group](#input\_argocd\_oidc\_admin\_group) | OIDC admin group for ArgoCD. Value must match whatever the IdP puts in the ID token's `groups` claim: a group name for IdPs like JumpCloud, or an Entra ID cloud-native group's Object ID (GUID) when the IdP is Microsoft Entra (name-based matching only works there for groups hybrid-synced from on-prem AD with the sAMAccountName claim configured). | `string` | `"argocd-admins"` | no |
 | <a name="input_argocd_oidc_client_id"></a> [argocd\_oidc\_client\_id](#input\_argocd\_oidc\_client\_id) | OIDC client ID for ArgoCD | `string` | `"argocd"` | no |
 | <a name="input_argocd_oidc_client_secret"></a> [argocd\_oidc\_client\_secret](#input\_argocd\_oidc\_client\_secret) | OIDC client secret for ArgoCD | `string` | `""` | no |
@@ -68,6 +68,7 @@ No modules.
 | <a name="input_argocd_path"></a> [argocd\_path](#input\_argocd\_path) | Path in `var.argocd_repo` in which app defs are placed | `string` | `"."` | no |
 | <a name="input_argocd_path_recursive"></a> [argocd\_path\_recursive](#input\_argocd\_path\_recursive) | Should ArgoCD recurse through `var.argocd_path`? | `bool` | `true` | no |
 | <a name="input_argocd_repo"></a> [argocd\_repo](#input\_argocd\_repo) | Git repo for Argo apps | `string` | `"git@github.com:inl-io/argo-apps.git"` | no |
+| <a name="input_argocd_session_duration"></a> [argocd\_session\_duration](#input\_argocd\_session\_duration) | How long an ArgoCD login session lasts before a user must reauthenticate, as a Go duration string (e.g. "24h", "72h"). Sets `users.session.duration` in argocd-cm. | `string` | `"24h"` | no |
 | <a name="input_doppler_token"></a> [doppler\_token](#input\_doppler\_token) | Service token to access Doppler | `string` | `""` | no |
 | <a name="input_infra_namespaces"></a> [infra\_namespaces](#input\_infra\_namespaces) | List of namespaces to create | `list(string)` | <pre>[<br/>  "argocd",<br/>  "external-secrets",<br/>  "inl-infra"<br/>]</pre> | no |
 | <a name="input_ingress_class"></a> [ingress\_class](#input\_ingress\_class) | Ingress class to use | `string` | `"nginx"` | no |
